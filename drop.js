@@ -4,9 +4,10 @@ class Drop{
             friction: 0.1,
             restitution:0.1           
         }
-        this.rain = Bodies.circle(x,y,5,options)
+        this.rain = Bodies.circle(x,y,20,options)
         this.radius = 5;
         World.add(world, this.rain);
+        this.image=loadImage("s.png")
     }
 
     update(){     
@@ -18,7 +19,7 @@ class Drop{
 
      display(){
         fill("blue")
-        ellipseMode(CENTER);
-        ellipse(this.rain.position.x,this.rain.position.y,this.radius,this.radius);
+        imageMode(CENTER);
+        image(this.image,this.rain.position.x,this.rain.position.y,50,50);
     }
 }

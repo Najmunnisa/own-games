@@ -4,7 +4,9 @@ const Bodies = Matter.Bodies;
 var thunder, thunder1,thunder2,thunder3,thunder4;
 var batAnimation,bat;
 
-
+var bg,bgi
+var skeleton,sk1
+var track,trackimg,bg1,bgi1
 var engine, world;
 
 var rand;
@@ -20,6 +22,8 @@ function preload(){
     thunder2 = loadImage("thunderbolt/2.png");
     thunder3 = loadImage("thunderbolt/3.png");
     thunder4 = loadImage("thunderbolt/4.png");
+    bg=loadImage("4.jpg");
+    bg1=loadImage("5.jpg");
 
     batAnimation = loadAnimation("bat/bat1.png","bat/bat2.png","bat/bat3.png",
                         "bat/bat4.png","bat/bat5.png","bat/bat6.png",
@@ -29,11 +33,21 @@ function preload(){
 }
 
 function setup(){
+  bgi=createSprite(400,350)
+  bgi.addImage(bg);
+  bgi1=createSprite(1400,350);
+  bgi1.addImage(bg1)
+  bgi.velocityX=-2;
+  bgi1.velocityX=-2;
+  bgi.scale=1 
     engine = Engine.create();
     world = engine.world;
 
-    createCanvas(400,700);
+    createCanvas(900,700);
+   
     umbrella = new Umbrella(200,500);
+
+
 
     //create drops
     if(frameCount % 150 === 0){
@@ -43,8 +57,14 @@ function setup(){
         }
 
     }
-        
-    
+    /*bgi=createSprite(400,350)
+    bgi.addImage(bg);
+    bgi1=createSprite(1400,350);
+    bgi1.addImage(bg1)
+    bgi.velocityX=-2;
+    bgi1.velocityX=-2;
+    bgi.scale=1    */
+  
 }
 
 function draw(){
@@ -86,6 +106,7 @@ function draw(){
         thunder.destroy();
     }
 
+    drawSprites();
     umbrella.display();
 
     //display rain drops
@@ -96,6 +117,5 @@ function draw(){
     }
 
 
-    drawSprites();
 }   
 
